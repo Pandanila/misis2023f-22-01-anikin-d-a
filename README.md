@@ -4,7 +4,5 @@
 3) Количество утечек
 4) Объем утечек (мм3)
 
-Функционал \n
-Вход \n
-Выход \n
-Как проверять \n
+Хранилище проекта: https://github.com/emilakper/poromarker
+Личное хранилище: https://github.com/Pandanila/misis2023f-22-01-anikin-d-a
