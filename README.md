@@ -4,5 +4,5 @@
 3) Количество утечек
 4) Объем утечек (мм3)
 
-Хранилище проекта: https://github.com/emilakper/poromarker__
+Хранилище проекта: https://github.com/emilakper/poromarker<br/>
 Личное хранилище: https://github.com/Pandanila/misis2023f-22-01-anikin-d-a
