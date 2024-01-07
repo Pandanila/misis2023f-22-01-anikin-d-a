@@ -6,5 +6,4 @@ add_executable(0977a 0977a.cpp)
 add_executable(1030a 1030a.cpp)
 add_executable(1328a 1328a.cpp)
 add_executable(1335a 1335a.cpp)
-add_executable(0112a 0112a.cpp)
-add_executable(0339a 0339a.cpp)
+
