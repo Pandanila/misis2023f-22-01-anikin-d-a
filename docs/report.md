@@ -36,4 +36,6 @@
 **Service Object Pair** – комбинация команды (Service Group) и объекта (Information Object Definition), с которым эта команда будет выполняться.  
 Например, SOP Class “MR Image Storage” = Storage + MR Image.
 
-**Application Entities** – отдельный сервис DICOM, узел сети DICOM. (Medema
+**Application Entities** – отдельный сервис DICOM, узел сети DICOM. (Medema)
+
+
