@@ -38,4 +38,5 @@
 
 **Application Entities** – отдельный сервис DICOM, узел сети DICOM. (Medema)
 
-![text](https://disk.yandex.ru/i/NOnGfTYzIxfUzg)
+![image](https://github.com/Pandanila/misis2023f-22-01-anikin-d-a/assets/97802843/ecacd8d6-979c-4c48-8016-1536cd4ddea2)
+
