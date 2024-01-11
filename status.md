@@ -1,6 +1,4 @@
-OK: file codeforces.id is correct
-CHECK: 20231211-024538
-OK: folder prj.codeforces structure is correct
+CHECK: 20240111-161330
 ERROR: file prj.cw/CMakeLists.txt is absent
 OK: CMake generator successed
 OK: CMake build (MSVC x64) successed
