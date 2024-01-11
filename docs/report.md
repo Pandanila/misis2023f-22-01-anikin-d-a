@@ -48,3 +48,8 @@
 ![image](https://github.com/Pandanila/misis2023f-22-01-anikin-d-a/assets/97802843/39aca6ea-d50e-4eb6-b28b-1f5a4d00017b)
 
 **Метаинформация файла** включает в себя идентификационную информацию об инкапсулированном наборе данных. Этот заголовок состоит из 128-байтовой преамбулы файла, за которой следует 4-байтовый префикс DICOM, за которым следуют метаэлементы файла, показанные в таблице. Этот заголовок должен присутствовать в каждом файле DICOM. (dicom.nema.org)
+
+![image](https://github.com/Pandanila/misis2023f-22-01-anikin-d-a/assets/97802843/3fba714a-a265-4010-92cd-44cabfff1197)
+![image](https://github.com/Pandanila/misis2023f-22-01-anikin-d-a/assets/97802843/f0ce3d1e-11fe-4b64-84da-6c30855b4e31)
+![image](https://github.com/Pandanila/misis2023f-22-01-anikin-d-a/assets/97802843/584124a2-166b-4872-9b77-7c5112b0a269)
+
