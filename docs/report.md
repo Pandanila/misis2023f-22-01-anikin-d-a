@@ -81,4 +81,81 @@
 *	для проверки, создания и преобразования файлов изображений DICOM
 *	для работы с носителями информации
 *	для отправки и получения изображений через сетевое соединение
+
 Пример создания dicom-файла с помощью библиотеки DCMTK приведен в прикрепленном файле.
+
+```
+#include <iostream>
+#include "dcmtk/config/osconfig.h"
+#include "dcmtk/dcmdata/dcfilefo.h"
+#include "dcmtk/dcmdata/libi2d/i2d.h"
+#include "dcmtk/dcmdata/libi2d/i2djpgs.h"
+#include "dcmtk/dcmdata/libi2d/i2dplsc.h"
+#include "dcmtk/dcmdata/dctk.h"
+
+void createDicomImage() {
+    char uid[100];
+    I2DImgSource* inputPlug = new I2DJpegSource();
+    I2DOutputPlug* outPlug = new I2DOutputPlugSC();
+    Image2Dcm i2d;
+    E_TransferSyntax writeXfer;
+    DcmDataset* resultDset = NULL;
+//uid будет использоваться для создания uid для экземпляра SOP.
+//inputPlug имеет тип I2DJpegSource, который представляет собой реализацию I2DImgSource для анализа изображений JPEG и преобразования их в файлы DICOM.
+//outPlug имеет тип I2DOutputPlugSC, который реализует преобразование изображений в файлы DICOM.
+//i2d — переменная типа Image2Dcm, в которой реализованы утилиты для преобразования изображения в файл DICOM.
+//writeXfer — это переменная типа E_TransferSyntax, которая состоит из перечислителя всех синтаксисов передачи DICOM, известных набору инструментов.
+//resultDset — это переменная типа DcmDataset, который представляет собой класс, обрабатывающий формат набора данных DICOM.
+
+    inputPlug->setImageFile("test.jpg");
+    i2d.convert(inputPlug, outPlug, resultDset, writeXfer);
+//настраиваем входное изображение для чтения с помощью inputPlug , а затем выполним преобразование изображения в DICOM
+//с помощью функции преобразования i2d , которой в качестве входных параметров передается следующее:
+//
+//  1. inputPlug с изображением для конвертации.
+//  2. outPlug для выполнения преобразования.
+//
+//А выходными параметрами ему передается следующее:
+//
+//  1. resultDset для хранения результирующего объекта DICOM.
+//  2. writeXfer , чтобы сохранить синтаксис передачи.
+
+    resultDset->putAndInsertString(DCM_PatientName, "Brandon Lara");
+    resultDset->putAndInsertString(DCM_SOPClassUID, UID_SecondaryCaptureImageStorage);
+    resultDset->putAndInsertString(DCM_SOPInstanceUID, dcmGenerateUniqueIdentifier(uid, SITE_INSTANCE_UID_ROOT));
+// После этого объект resultDset будет состоять из объекта DICOM без изображения, но с ним.
+// Этот объект типа DcmDataset предоставляет определенные функции для установки данных в нем.
+// Используя эти же функции, имя пациента, идентификатор класса СОП
+// и идентификатор экземпляра СОП будут установлены с помощью тестовых данных
+
+    DcmFileFormat dcmff(resultDset);
+    dcmff.saveFile("test.dcm", writeXfer, EET_ExplicitLength, EGL_recalcGL, EPD_noChange, OFstatic_cast(Uint32, 0), OFstatic_cast(Uint32, 0), EWM_fileformat);
+// resultDset будет сохранен как файл DICOM (.dcm) в папке проекта.
+// Для этого необходимо создать DcmFileFormat с этим resultDset,
+// чтобы сохранить его с помощью функции сохранения DcmFileFormat .
+// Параметры, начиная с третьего, стандартные для преобразования img в dcm
+}
+
+void loadDicom() {
+    DcmFileFormat fileformat;
+    OFCondition status = fileformat.loadFile("test.dcm");
+    if (status.good())
+    {
+        OFString patientName;
+        if (fileformat.getDataset()->findAndGetOFString(DCM_PatientName, patientName).good())
+        {
+            std::cout << "Patient's Name: " << patientName << std::endl;
+        }
+        else
+            std::cerr << "Error: cannot access Patient's Name!" << std::endl;
+    }
+    else
+        std::cerr << "Error: cannot read DICOM file (" << status.text() << ")" << syd::endl;
+}
+
+int main()
+{
+    createDicomImage();
+    loadDicom();
+}
+```
