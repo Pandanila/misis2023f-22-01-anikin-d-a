@@ -84,7 +84,7 @@
 
 Пример создания dicom-файла с помощью библиотеки DCMTK приведен в прикрепленном файле.
 
-```
+```с++
 #include <iostream>
 #include "dcmtk/config/osconfig.h"
 #include "dcmtk/dcmdata/dcfilefo.h"
